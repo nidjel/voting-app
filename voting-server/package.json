@@ -1,0 +1,28 @@
+{
+  "name": "voting-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "babel-node index.js"
+  },
+  "babel": {
+    "plugins": ["transform-object-rest-spread"],
+    "presets": ["env"]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^21.2.1"
+  },
+  "dependencies": {
+    "redux": "^3.7.2",
+    "socket.io": "^2.0.3"
+  }
+}
