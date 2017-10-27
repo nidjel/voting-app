@@ -6,7 +6,8 @@ export function startServer(store) {
   store.subscribe(() => io.emit('state', store.getState()))
   
   io.on('connection', (client) => {
-    console.log('connect')
+    console.log('new client was connected')
+    
     client.emit('state', store.getState())
     client.on('action', store.dispatch.bind(store))
   })

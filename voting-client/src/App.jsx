@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
+import {Route} from 'react-router-dom'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        
-      </div>
-    )
-  }
-}
+import Voting from './components/Voting'
+import Results from './components/Results'
+
+const App = () => (
+  <div className="App">
+    <Route exact path="/" component={Voting} />
+    <Route path="/results" component={Results} />
+  </div>
+)
 
 export default App

@@ -9,6 +9,28 @@ function getWinner(vote) {
   }
 }
 
+function getEntries(entries, winner) {
+  if (entries.length === 1 && winner.length === 1) return []
+  return entries.slice(2).concat(winner)
+}
+
+function getVote(entries, winner) {
+  if (entries.length === 1 && winner.length === 1) return {
+    pair: [...entries].concat(winner),
+    tally: {
+      [entries[0]]: 0,
+      [winner[0]]: 0,
+    }
+  }
+  return {
+    pair: [...entries.slice(0, 2)],
+    tally: {
+      [entries[0]]: 0,
+      [entries[1]]: 0,
+    }
+  }
+}
+
 export const INITIAL_STATE = {}
 
 export function setEntries(state, entries) {
@@ -27,17 +49,10 @@ export function next(state) {
   } else {
     return {
       ...state,
-      entries: state.entries.slice(2).concat(winner),
-      vote: {
-        pair: [...state.entries.slice(0, 2)],
-        tally: {
-          [state.entries[0]]: 0,
-          [state.entries[1]]: 0,
-        }
-      }
+      entries: getEntries(state.entries, winner),
+      vote: getVote(state.entries, winner)
     }
   }
-
 }
 
 export function vote(state, entry) {

@@ -56,6 +56,30 @@ describe('логика приложения', () => {
       })
     })
     
+    it('когда остались две записи, берет их на голосование', () => {
+      const state = {
+        entries: ['2'],
+        vote: {
+          pair: ['3', '4'],
+          tally: {
+            3: 3,
+            4: 2
+          }
+        }
+      }
+      const newState = next(state)
+      expect(newState).toEqual({
+        entries: [],
+        vote: {
+          pair: ['2', '3'],
+          tally: {
+            2: 0,
+            3: 0
+          }
+        }
+      })
+    })
+    
     it('когда осталась одна запись, она объявляется победителем', () => {
       const state = {
         entries: [],
